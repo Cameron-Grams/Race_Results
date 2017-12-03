@@ -8,5 +8,5 @@ const router = express.Router();
 const jsonParser = bodyParser.json(); 
 
 // data model for the runners
-const { Runner } = require( './models/runner' );
+// const { Runner } = require( './models/runner' );
 

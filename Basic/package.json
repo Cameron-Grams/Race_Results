@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Basic node query race results",
   "main": "index.js",
-  "start": "node",
   "scripts": {
+    "start": "node index.js",
     "test": "mocha"
   },
   "author": "",

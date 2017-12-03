@@ -7,26 +7,21 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');  
 
 const app = express();
-const {PORT, DATABASE_URL} = require('./config/mainConfig.js');
+const { PORT, DATABASE_URL } = require( './config/Config.js' );
 
 // change based on runner model 
-const {User} = require('./models/user'); 
+// const { User } = require( './models/user' ); 
 
-const sessionRouter = require('./sessionRouter');
-const userRouter = require('./userRouter');
+const Router = require('./Router');
  
 app.use( bodyParser.urlencoded( { extended: false } ) ); 
 app.use( bodyParser.json() );
 app.use( morgan( 'dev' ) );
 
-app.use( passport.initialize() );
-const { basicStrategy: Strategy } = require( './config/passportStrategy' );
-Strategy( passport );
 
 app.use( express.static( 'public' ) );  
 
-app.use('/api', sessionRouter);
-app.use('/api', userRouter);
+// app.use('/api', Router);
 
 let server;
   
@@ -62,6 +57,8 @@ function closeServer(){
     } )
   } )
 };
+
+
 
 if ( require.main === module ){
   runServer().catch( err => console.error( err ) );
