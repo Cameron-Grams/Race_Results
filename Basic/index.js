@@ -10,7 +10,8 @@ const app = express();
 const { PORT, DATABASE_URL } = require( './config/Config.js' );
 
 // change based on runner model 
-// const { User } = require( './models/user' ); 
+// const { Runner } = require( './models/Runners' ); 
+const { Race } = require( './models/Race' ); 
 
 const Router = require('./Router');
  
@@ -21,7 +22,7 @@ app.use( morgan( 'dev' ) );
 
 app.use( express.static( 'public' ) );  
 
-// app.use('/api', Router);
+app.use('/api', Router);
 
 let server;
   
