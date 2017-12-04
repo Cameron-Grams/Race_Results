@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+* body{
+    font-family: 'Roboto', sans-serif;    
+}
+
+#outerShell{
+    position: absolute;
+    top: 10%;
+    width: 100%;
+}
+
+#innerShell{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 25%;
+    margin: auto;
+    padding: 5px;
+    text-align: center;
+}
+
+#startSearch{
+    margin-bottom: 10px;
+}
