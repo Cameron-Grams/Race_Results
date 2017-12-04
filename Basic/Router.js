@@ -10,14 +10,19 @@ const jsonParser = bodyParser.json();
 // data model for the runners
 const { Race } = require( './models/Race.js' );
 
-router.route( '/race' )
+router.route( '/race/:year' )
   .get( ( req, res ) => {
-      Race.find( { year: req.year } )   // tried req.params.year 
+      console.log( 'query', req.query, ' params ', req.params ); 
+
+      Race.find( { year: req.params.year }, {runners: {$elemMatch: req.query } } )
+//        Race.find( { year: req.params.year, runners: req.query } )
+//      Race.find( { year: req.params.year, "runners.city": req.query.city  } )   //  ----> thing[0]["runners"]     
       .then( race => {
           return res.json( race );
       } )
       .catch( () => res.status( 500 ).send( 'endpoint error..........' ) );
 });
+
 
 /*
 //  querries the Race DB for the correct year
