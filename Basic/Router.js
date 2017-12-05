@@ -23,17 +23,14 @@ router.route( '/race/:year' )
         console.log( searchKeys, ' on object ', searchObj );
 
         for ( let i = 0; i < runners.length; i++ ){
-            searchKeys.forEach( function( searchTerm ){  /////////////////////////////
-            if ( runners[ i ][ `${ searchTerm }` ] === searchObj[ `${ searchTerm }` ] ){
-                results.push( runners[ i ] );
-            }
+            searchKeys.forEach( function( searchTerm ){ 
+                if ( runners[ i ][ `${ searchTerm }` ] === searchObj[ `${ searchTerm }` ] ){
+                    results.push( runners[ i ] );
+                }
             }
         ) } 
         return res.json( results );
       })
-//      .then( race => {
-//          return res.json( race );
-//      } )
       .catch( () => res.status( 500 ).send( 'endpoint error..........' ) );
 });
 
